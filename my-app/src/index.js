@@ -21,23 +21,19 @@ function Square(props) {
     }
   
     render() {
+      let squareRows = [];
+      let count = 0;
+      for (let i = 0; i < 3; i++) {
+          let squareTiles = [];
+          for (let j = 0; j < 3; j++) {
+              squareTiles.push(count);
+              count = count + 1;
+          }
+          squareRows.concat(<div className="board-row">{this.renderSquare({squareTiles})}</div>)
+      }
       return (
         <div>
-          <div className="board-row">
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(3)}
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(6)}
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
-          </div>
+          {squareRows}
         </div>
       );
     }
